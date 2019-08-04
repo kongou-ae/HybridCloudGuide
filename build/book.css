@@ -1,0 +1,148 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+@page {
+    size: A4;
+  
+    margin-top: 25mm;
+    margin-right: 20mm;
+    margin-left: 20mm;
+    margin-bottom: 25mm;
+  
+    padding-top: 5mm;
+    padding-bottom: 5mm;
+  
+    @bottom-center {
+      content: counter(page) " / " counter(pages) ;
+      border-top:1pt solid black;
+      white-space: pre;
+      color: gray;
+      font-size:9pt;
+    }
+  
+    @top-left {
+      border-bottom: 1pt solid black;
+      vertical-align: middle;
+      color: gray;
+      font-size:9pt;
+    }
+  }
+  
+  @page :first{
+    size: A4;
+  
+    @bottom-center {
+      content: "";
+      border-top:0pt solid black;
+    }
+  
+    @top-left {
+      content: "";
+      border-bottom:0pt solid black;
+    }
+  }
+  
+  /*-------------------------------------
+  Body
+  -------------------------------------*/
+  
+  body {
+    font-family: 'Noto Sans JP';
+    counter-reset: h1 h2 h3 imgcaption tablecaption toch1 toch2 toch3;
+  }
+  
+  #mainpage {
+    counter-reset: h1;
+  }
+  
+  /*-------------------------------------
+  heading
+  -------------------------------------*/
+  
+  h1 {
+    break-before: page;
+    font-size: 2em;
+    counter-reset: h2 h3;
+  }
+  
+  h1:nth-of-type(n+2) {
+    border-bottom:1pt solid gray;
+    margin-top: 0mm;
+  }
+  
+  
+  h1:nth-of-type(n+2)::before {
+    counter-increment: h1;
+    content: counter(h1)". " ;
+  }
+  
+  h1:first-child{
+    text-align: center;
+    margin-top: 50%;
+  }
+  
+  
+  h2 {
+    font-size: 1.5em;
+    counter-reset: h3;
+  }
+  
+  h2::before {
+    counter-increment: h2;
+    content: counter(h1)"."counter(h2)". " ;
+  }
+  
+  h3 {
+    font-size: 1.25em;
+  }
+  
+  h3::before {
+    counter-increment: h3;
+    content: counter(h1)"."counter(h2)"."counter(h3)". " ;
+  }
+  
+  
+  /*-------------------------------------
+  Others
+  -------------------------------------*/
+  
+  p {
+    font-size: 10.5pt;
+    text-indent: 1rem;
+  }
+  
+  p:nth-of-type(1) {
+    text-align: center;
+  }
+  
+  p:nth-of-type(2) {
+    text-align: center;
+  }
+  
+  
+  ol {
+    font-size: 10.5pt;
+  }
+  
+  ul {
+    font-size: 10.5pt;
+  }
+  
+  /*-------------------------------------
+  table
+  -------------------------------------*/
+  
+  th,td {
+    border: solid 1px black;
+    padding-left: 2mm;
+    padding-right: 2mm;
+    font-size: 10.5pt;
+  }
+  
+  table {
+    border-collapse:  collapse;
+  }
+  
+  thead {
+    background-color: dimgray;
+    color: white;
+  }
