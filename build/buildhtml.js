@@ -8,7 +8,6 @@ const md = new MarkdownIt()
         .use(require('markdown-it-anchor'), {
             slugify: function (header) {
                 return encodeURI(header.trim()
-                    .toLowerCase()
                     .replace(/[\]\[\!\"\#\$\%\&\'\(\)\*\+\,\.\/\:\;\<\=\>\?\@\\\^\_\{\|\}\~]/g, '')
                     .replace(/\s+/g, '-')) // Replace spaces with hyphens
                     .replace(/\-+$/, ''); // Replace trailing hyphen
