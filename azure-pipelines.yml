@@ -11,10 +11,25 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: Npm@1
+  inputs:
+    command: 'install'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'html'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'pdf'
+
+- task: AzureFileCopy@3
+  inputs:
+    SourcePath: 'dist/guideline.pdf'
+    azureSubscription: $(azureSubscription)
+    Destination: 'AzureBlob'
+    storage: 'reiwa'
+    ContainerName: '$web'
+    BlobPrefix: 'guideline.pdf'
