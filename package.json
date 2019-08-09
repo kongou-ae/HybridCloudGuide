@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "html": "node build/buildhtml.js",
-    "pdf": "./node_modules/.bin/savepdf -o dist/guidline.pdf --size A4 build/book.html",
+    "pdf": "./node_modules/.bin/savepdf -o dist/guidleine.pdf --size A4 build/book.html",
     "build": "npm run html && npm run pdf"
   },
   "repository": {

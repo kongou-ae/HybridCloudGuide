@@ -17,9 +17,9 @@ const md = new MarkdownIt()
 const main = async ()=>{
 
     try {
-        await fs.unlinkSync("dist/guidline.pdf")
+        await fs.unlinkSync("dist/guideline.pdf")
     } catch(err) {
-        console.log("dist/guidline.pdf is not found ")
+        console.log("dist/guideline.pdf is not found ")
     }
 
     // すべての Markdown を結合する
