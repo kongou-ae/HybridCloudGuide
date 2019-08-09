@@ -18,12 +18,12 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'html'
+    customCommand: 'run html'
 
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'pdf'
+    customCommand: 'run pdf'
 
 - task: AzureFileCopy@3
   inputs:
