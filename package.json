@@ -4,8 +4,7 @@
   "description": "Ver. 1.0　2018年11月7日",
   "main": "index.js",
   "scripts": {
-    "html": "node build/buildHtml.js",
-    "pdf": "node build/buildPdf.js"
+    "html": "node build/buildHtml.js"
   },
   "repository": {
     "type": "git",

@@ -28,14 +28,14 @@ steps:
     script: |
       wget http://vivliostyle.github.io/vivliostyle.js/downloads/vivliostyle-js-latest.zip
       unzip vivliostyle-js-latest.zip
-      cd vivliostyle*
+      mv vivliostyle-* vivliostyle
 
 - task: AzureCLI@1
   displayName: 'Copy vivliostyle to a static web'
   inputs:
     azureSubscription: $(azureSubscription)
     scriptLocation: 'inlineScript'
-    inlineScript: 'az storage blob upload-batch -s ~/vivliostyle-*/viewer -d "$(azureBlobUrl)/\$web"'
+    inlineScript: 'az storage blob upload-batch -s ~/vivliostyle/viewer -d "$(azureBlobUrl)/\$web"'
 
 - task: AzureCLI@1
   displayName: 'Copy the media of the book to a static web'
