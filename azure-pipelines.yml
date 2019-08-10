@@ -16,15 +16,49 @@ steps:
     command: 'install'
 
 - task: Npm@1
+  displayName: 'Convert from a markdown to a html'
   inputs:
     command: 'custom'
     customCommand: 'run html'
 
-- task: AzureFileCopy@3
+- task: Bash@3
+  displayName: 'Download vivliostyle'
   inputs:
-    SourcePath: 'dist/guideline.pdf'
+    targetType: 'inline'
+    script: |
+      wget http://vivliostyle.github.io/vivliostyle.js/downloads/vivliostyle-js-latest.zip
+      unzip vivliostyle-js-latest.zip
+      cd vivliostyle*
+
+- task: AzureCLI@1
+  displayName: 'Copy vivliostyle to a static web'
+  inputs:
     azureSubscription: $(azureSubscription)
-    Destination: 'AzureBlob'
-    storage: 'reiwa'
-    ContainerName: '$web'
-    BlobPrefix: 'guideline.pdf'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az storage blob upload-batch -s ~/vivliostyle-*/viewer -d "$(azureBlobUrl)/\$web"'
+
+- task: AzureCLI@1
+  displayName: 'Copy the media of the book to a static web'
+  inputs:
+    azureSubscription: $(azureSubscription)
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az storage blob upload-batch -s ~/build/media -d "$(azureBlobUrl)/\$web/src"'
+
+- task: AzureCLI@1
+  displayName: 'Copy the html of the book to a static web'
+  inputs:
+    azureSubscription: $(azureSubscription)
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az storage blob upload-batch -s ~/build/book.html -d "$(azureBlobUrl)/\$web/src"'
+
+- task: CmdLine@2
+  displayName: 'Print pdf file'
+  inputs:
+    script: 'node .\build\buildPdf.js $(azureStaticWebUrl)'
+
+- task: AzureCLI@1
+  displayName: 'Push the pdf to static web'
+  inputs:
+    azureSubscription: $(azureSubscription)
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az storage blob upload-batch -s ~/dist/guideline-$(Build.SourceBranchName).pdf -d "$(azureBlobUrl)/\$web/dist"'
