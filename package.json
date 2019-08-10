@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "html": "node build/buildHtml.js",
-    "pdf": "node build/buildPdf.js",
+    "pdf": "node build/buildPdf.js"
   },
   "repository": {
     "type": "git",

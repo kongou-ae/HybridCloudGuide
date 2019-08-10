@@ -6,7 +6,7 @@ const main = async() => {
   const page = await browser.newPage();
 
   await page.goto(
-    'https://aimlessvivliostyle.z11.web.core.windows.net/vivliostyle-viewer.html#b=src/book.html&renderAllPages=true', 
+    process.argv[2] + '/vivliostyle-viewer.html#b=src/book.html&renderAllPages=true', 
     {
       waitUntil: "networkidle0",
       timeout: "300000"  
@@ -14,7 +14,7 @@ const main = async() => {
   );
 
   await page.pdf({
-    path: 'dist/guideline2.pdf',
+    path: 'dist/guideline.pdf',
     printBackground: true,
     format: 'A4'
   });
