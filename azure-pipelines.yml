@@ -28,6 +28,7 @@ steps:
     script: |
       wget http://vivliostyle.github.io/vivliostyle.js/downloads/vivliostyle-js-latest.zip
       unzip vivliostyle-js-latest.zip
+      rm vivliostyle-js-latest.zip 
       mv vivliostyle-* vivliostyle
 
 - task: AzureCLI@1
