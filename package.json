@@ -6,7 +6,6 @@
   "scripts": {
     "html": "node build/buildHtml.js",
     "pdf": "node build/buildPdf.js",
-    "build": "npm run html && npm run pdf"
   },
   "repository": {
     "type": "git",
