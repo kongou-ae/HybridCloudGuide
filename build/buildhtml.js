@@ -1,7 +1,6 @@
 // node.js, "classic" way:
 const MarkdownIt = require('markdown-it');
 
-const execSync = require('child_process').execSync;
 const path = require("path")
 const fs = require('fs');
 const md = new MarkdownIt()
@@ -15,7 +14,6 @@ const md = new MarkdownIt()
         });
 
 const main = async ()=>{
-
     try {
         await fs.unlinkSync("dist/guideline.pdf")
     } catch(err) {
@@ -33,8 +31,7 @@ const main = async ()=>{
     mdBook += await fs.readFileSync("008_ハイブリッドクラウド研究会の活動への参加の誘い.md", {encoding: "utf-8"});
     mdBook += await fs.readFileSync("009_あとがき的なもの.md", {encoding: "utf-8"});
 
-    // Media フォルダを build フォルダに移動
-
+    // Media フォルダを build フォルダにコピー
     let files = fs.readdirSync('media');
     files.forEach(element => {
         console.log(element)
@@ -47,9 +44,8 @@ const main = async ()=>{
     htmlBook = await fs.readFileSync("build/header.html", {encoding: "utf-8"}) + htmlBook;
     htmlBook += await fs.readFileSync("build/footer.html", {encoding: "utf-8"});
 
-    // PDF を書き出し
     await fs.writeFileSync("build/book.html",htmlBook,{ flag : 'w' })
-    console.log("Generated build/book.html")
+    console.log("Generated build/book.html")    
 }
 
 main()

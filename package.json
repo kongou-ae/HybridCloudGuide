@@ -4,8 +4,8 @@
   "description": "Ver. 1.0　2018年11月7日",
   "main": "index.js",
   "scripts": {
-    "html": "node build/buildhtml.js",
-    "pdf": "./node_modules/.bin/savepdf -o dist/guideline.pdf --size A4 build/book.html",
+    "html": "node build/buildHtml.js",
+    "pdf": "node build/buildPdf.js",
     "build": "npm run html && npm run pdf"
   },
   "repository": {
@@ -20,9 +20,8 @@
   "homepage": "https://github.com/kongou-ae/HybridCloudGuide#readme",
   "devDependencies": {
     "markdown-it": "^9.0.1",
-    "vivliostyle-savepdf": "^1.3.0"
+    "markdown-it-anchor": "^5.2.4",
+    "puppeteer": "^1.19.0"
   },
-  "dependencies": {
-    "markdown-it-anchor": "^5.2.4"
-  }
+  "dependencies": {}
 }

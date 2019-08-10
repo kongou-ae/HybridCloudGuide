@@ -20,11 +20,6 @@ steps:
     command: 'custom'
     customCommand: 'run html'
 
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    customCommand: 'run pdf'
-
 - task: AzureFileCopy@3
   inputs:
     SourcePath: 'dist/guideline.pdf'
