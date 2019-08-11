@@ -60,7 +60,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      mv build/guideline.pdf vivliostyle/viewer/dist/guideline-$(Build.SourceBranchName).pdf
+      mv dist/guideline.pdf vivliostyle/viewer/dist/guideline-$(Build.SourceBranchName).pdf
 
 - task: AzureCLI@1
   displayName: 'Push the pdf to static web'
