@@ -47,23 +47,23 @@ steps:
   inputs:
     azureSubscription: $(azureSubscription)
     scriptLocation: 'inlineScript'
-    inlineScript: 'az storage blob upload-batch -s build/media -d "$(azureBlobUrl)/\$web/src"'
+    inlineScript: 'az storage blob upload-batch -s build/media -d "$(azureBlobUrl)/\$web"'
 
 - task: AzureCLI@1
   displayName: 'Copy the html of the book to a static web'
   inputs:
     azureSubscription: $(azureSubscription)
     scriptLocation: 'inlineScript'
-    inlineScript: 'az storage blob upload-batch -s　build/book.html -d "$(azureBlobUrl)/\$web/src"'
+    inlineScript: 'az storage blob upload-batch -s　build/book.html -d "$(azureBlobUrl)/\$web"'
 
 - task: CmdLine@2
   displayName: 'Print pdf file'
   inputs:
-    script: 'node build\buildPdf.js $(azureStaticWebUrl)'
+    script: 'node build/buildPdf.js $(azureStaticWebUrl)'
 
 - task: AzureCLI@1
   displayName: 'Push the pdf to static web'
   inputs:
     azureSubscription: $(azureSubscription)
     scriptLocation: 'inlineScript'
-    inlineScript: 'az storage blob upload-batch -s dist/guideline-$(Build.SourceBranchName).pdf -d "$(azureBlobUrl)/\$web/dist"'
+    inlineScript: 'az storage blob upload-batch -s dist/guideline-$(Build.SourceBranchName).pdf -d "$(azureBlobUrl)/\$web/"'
