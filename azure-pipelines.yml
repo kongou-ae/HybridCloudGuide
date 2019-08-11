@@ -31,7 +31,9 @@ steps:
       rm vivliostyle-js-latest.zip 
       mv vivliostyle-* vivliostyle
       mkdir vivliostyle/src
+      touch vivliostyle/src/.gitkeep
       mkdir vivliostyle/dist
+      touch vivliostyle/dist/.gitkeep
 
 - task: AzureCLI@1
   displayName: 'Copy vivliostyle to a static web'
