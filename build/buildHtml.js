@@ -40,7 +40,11 @@ const main = async ()=>{
 
     // Markdown を HTML に変換
     let htmlBook = md.render(mdBook);
+
+    // アンカーからファイル名を削除
     htmlBook = htmlBook.replace(/<a href="[0-9]{3}_.*?#/g,'<a href="#')
+    // テーブルをセンタリング
+    htmlBook = htmlBook.replace(/<table>/g,'<table align="center">')
     htmlBook = await fs.readFileSync("build/header.html", {encoding: "utf-8"}) + htmlBook;
     htmlBook += await fs.readFileSync("build/footer.html", {encoding: "utf-8"});
 

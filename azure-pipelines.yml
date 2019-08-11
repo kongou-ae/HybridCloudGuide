@@ -30,6 +30,7 @@ steps:
       unzip vivliostyle-js-latest.zip
       rm vivliostyle-js-latest.zip 
       mv vivliostyle-* vivliostyle
+      ls build
 
 - task: AzureCLI@1
   displayName: 'Copy vivliostyle to a static web'
