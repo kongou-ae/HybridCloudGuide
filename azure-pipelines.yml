@@ -15,6 +15,13 @@ steps:
   inputs:
     command: 'install'
 
+- task: Bash@3
+  displayName: 'Delete the files in dist'
+  inputs:
+    targetType: 'inline'
+    script: |
+      rm dist/*.pdf
+
 - task: Npm@1
   displayName: 'Convert from a markdown to a html'
   inputs:
