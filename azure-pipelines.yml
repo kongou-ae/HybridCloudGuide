@@ -43,6 +43,7 @@ steps:
       touch vivliostyle/viewer/dist/.gitkeep
       cp -r build/media vivliostyle/viewer/src/media
       cp build/book.html vivliostyle/viewer/src/book.html
+      cp build/book.css vivliostyle/viewer/src/book.css
 
 - task: AzureCLI@1
   displayName: 'Copy files to a static web'
