@@ -143,14 +143,11 @@
   
   table {
     border-collapse:  collapse;
+    margin-left : auto ;  
+    margin-right : auto ;
   }
   
   thead {
     background-color: dimgray;
     color: white;
-  }
-
-  table.center{
-    margin-left : auto ;  
-    margin-right : auto ;
   }
