@@ -6,7 +6,7 @@ const main = async() => {
   const page = await browser.newPage();
 
   await page.goto(
-    process.argv[2] + '/vivliostyle-viewer.html#b=src/book.html&renderAllPages=true', 
+    'http://localhost:8080/vivliostyle/viewer/vivliostyle-viewer.html#b=build/book.html&renderAllPages=true', 
     {
       waitUntil: "networkidle0",
       timeout: "300000"  
