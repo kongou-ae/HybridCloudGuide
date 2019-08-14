@@ -24,7 +24,7 @@ npm run pdf
 ## 詳細
 
 1. `npm install`を実行して、依存関係のあるパッケージをインストールします
-2. `npm run html`を実行して、複数の Markdown ファイルを結合して1つの HTML ファイル(`build/book.html`)に変換します。また`media`配下の画像ファイルを`build\media`にコピーします
+2. `npm run html`を実行して、複数の Markdown ファイルを1つの HTML ファイル(`build/book.html`)に変換します。また`media`配下の画像ファイルを`build\media`にコピーします
 3. `docker build ./build/docker/ -t vivliostyle-viewer`を実行して、PDF 変換用のコンテナイメージを作成します
 4. `docker run -d -p 8080:80 --name vivliostyle-viewer vivliostyle-viewer`を実行して、PDF 変換用のコンテナを起動します
 5. `docker cp build "$(docker ps -q --filter "name=vivliostyle-viewer"):/usr/share/nginx/html/vivliostyle/viewer/"`を実行して、`build`ディレクトリを PDF 変換用コンテナにコピーします
