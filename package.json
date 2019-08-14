@@ -1,0 +1,28 @@
+{
+  "name": "hybridcloudguide",
+  "version": "1.0.0",
+  "description": "Ver. 1.0　2018年11月7日",
+  "main": "index.js",
+  "scripts": {
+    "html": "node build/buildHtml.js",
+    "pdf": "node build/buildPdf.js",
+    "container": "docker run -d -p 8080:80 --name vivliostyle-viewer vivliostyle-viewer",
+    "copy": "docker cp build \"$(docker ps -q -f \"name=vivliostyle-viewer\"):/usr/share/nginx/html/vivliostyle/viewer/\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kongou-ae/HybridCloudGuide.git"
+  },
+  "author": "kongou-ae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kongou-ae/HybridCloudGuide/issues"
+  },
+  "homepage": "https://github.com/kongou-ae/HybridCloudGuide#readme",
+  "devDependencies": {
+    "markdown-it": "^9.0.1",
+    "markdown-it-anchor": "^5.2.4",
+    "puppeteer": "^1.19.0"
+  },
+  "dependencies": {}
+}
